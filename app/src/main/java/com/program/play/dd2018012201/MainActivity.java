@@ -103,12 +103,38 @@ public class MainActivity extends AppCompatActivity {
         File dbFile = new File(getFilesDir(), "student.db");
         SQLiteDatabase db = SQLiteDatabase.openDatabase(dbFile.getAbsolutePath(), null, SQLiteDatabase.OPEN_READWRITE);
         ContentValues cv = new ContentValues();
+// last data ???
         cv.put("_id", 4);
         cv.put("name", "Mary");
         cv.put("score", 92);
+/*
+        cv.put("_id", 5);
+        cv.put("name", "5555");
+        cv.put("score", 92);
+
+        cv.put("_id", 6);
+        cv.put("name", "6666");
+        cv.put("score", 92);
+*/
         db.insert("student", null, cv);
         db.close();
     }
 
+    public void click8(View v)
+    {
+        File dbFile = new File(getFilesDir(), "student.db");
+        SQLiteDatabase db = SQLiteDatabase.openDatabase(dbFile.getAbsolutePath(), null, SQLiteDatabase.OPEN_READWRITE);
+        ContentValues cv = new ContentValues();
+        cv.put("score", 85);
+        db.update("student", cv, "_id=?", new String[] {"3"});
+        db.close();
+    }
+    public void click9(View v)
+    {
+        File dbFile = new File(getFilesDir(), "student.db");
+        SQLiteDatabase db = SQLiteDatabase.openDatabase(dbFile.getAbsolutePath(), null, SQLiteDatabase.OPEN_READWRITE);
+        db.delete("student", "_id=?", new String[] {"3"});
+        db.close();
+    }
 
 }
